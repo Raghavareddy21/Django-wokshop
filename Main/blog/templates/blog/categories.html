@@ -1,0 +1,8 @@
+{% extends 'blog/nav.html' %}
+{% block content %}
+<ul>
+{% for category in category_list%}
+  <li>{{category.name}}</li>
+{% endfor %}
+</ul>
+{% endblock %}

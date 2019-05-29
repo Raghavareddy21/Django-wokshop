@@ -1,0 +1,18 @@
+{% extends 'blog/nav.html' %}
+{% block content %}
+<div class="container">
+  <br /><br /><br /><br /><br /><br />
+    <h4 style="color:red;text-align:center;">{{err}}</h4>
+  <div class="row">
+    <div class="col-md-4 offset-md-4 card">
+      <div class="card-header" style="background: #ffffff;"></span><h1><center>Admin Login</center></h1></div>
+      <div class="card-body">
+      	<form method="post">
+  			{% csrf_token %}
+			{{ form.as_p }}
+  			<button type="submit">Login</button>
+		</form>
+	</div>
+</div></div>
+</div>
+{% endblock %}
