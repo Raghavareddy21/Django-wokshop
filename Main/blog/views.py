@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Post, Category
+from . import forms
 from django.http import HttpResponse
 
 
@@ -15,6 +16,14 @@ def categorylist(request):
 	categories = Category.objects.all()
 	return render(request, 'blog/categories.html',{'category_list':categories})
 
-#def blogPost(request):
-#	if request.method == 'POST':
-#		title
+def blogPost(request):
+	if request.method == 'POST':
+		form = forms.addPost(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponse("The post has been saved")
+		else:
+			return HttpResponse("The form is not valid")
+	else:
+		form = forms.addPost(request.POST)
+		return render(request, 'blog/addPost.html', {'form':form})
