@@ -8,9 +8,13 @@ def home(request):
 
 def posts(request):
 	posts = Post.objects.order_by('-date')
-	print(posts)
-	return render(request, 'blog/posts.html',{'posts': posts})
+	categories = Category.objects.all()	
+	return render(request, 'blog/posts.html',{'posts': posts, 'categories': categories})
 
 def categorylist(request):
 	categories = Category.objects.all()
 	return render(request, 'blog/categories.html',{'category_list':categories})
+
+#def blogPost(request):
+#	if request.method == 'POST':
+#		title
